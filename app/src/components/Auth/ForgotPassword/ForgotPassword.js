@@ -1,10 +1,10 @@
-import InputBlock from "../InputBlock/InputBlock";
+import style from "./ForgotPassword.module.css"
 
 const ForgotPassword = () => {
     return (
-        <div className="forgot_block">
+        <div className={style.forgot_block}>
             <span></span>
-            <a href="" className="forgot_link">забыли ваш пароль?</a>
+            <a href="" className={style.forgot_link}>забыли ваш пароль?</a>
         </div>
     )
 }
