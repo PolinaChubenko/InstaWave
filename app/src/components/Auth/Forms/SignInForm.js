@@ -1,9 +1,11 @@
+import cx from 'classnames';
 import InputBlock from "../InputBlock/InputBlock";
 import ForgotPassword from "../ForgotPassword/ForgotPassword";
+import style from "./Forms.module.css";
 
 const SignInForm = () => {
     return (
-        <form className="form form_login">
+        <form className={cx(style.form, style.form_login)}>
             <fieldset>
                 <p className="lets_go">Vaporwave, как и другие эстетики, вызывает ностальгию. Но даже
                     если вас не было в 90-ые, фотокарточки отправят вас в эпоху, которая
@@ -12,7 +14,7 @@ const SignInForm = () => {
                 <InputBlock text={"пароль"} id={"login_password"} type={"password"}/>
                 <ForgotPassword/>
             </fieldset>
-            <button type="submit" className="btn_login">войти</button>
+            <button type="submit" className={style.btn_login}>войти</button>
         </form>
     )
 }

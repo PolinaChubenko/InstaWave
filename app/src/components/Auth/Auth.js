@@ -1,13 +1,13 @@
 import Logo from "./Logo/Logo";
-import Forms from "./Forms/Forms";
-import "./Auth.css"
+import FormsController from "./Forms/FormsController";
+import style from "./Auth.module.css";
 
 const Auth = () => {
     return (
-        <div className="index_wrapper">
+        <div className={style.index_wrapper}>
             <div></div>
             <Logo/>
-            <Forms/>
+            <FormsController/>
             <div></div>
         </div>
     )

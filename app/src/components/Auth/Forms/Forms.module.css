@@ -1,20 +1,3 @@
-body {
-    background: linear-gradient(180deg, rgba(232,83,185,1) 0%, rgba(60,134,248,1) 100%);
-}
-
-@font-face {
-    font-family: 'QuickenCondensedItalic';
-    src: url(./../../fonts/QuickenCondensedItalic.ttf)
-}
-
-.index_wrapper {
-    display: grid;
-    height: 100%;
-    width: 100%;
-    /* ! */
-    grid-template-columns: 1fr 5fr 5fr 1fr;
-}
-
 .forms {
     display: flex;
     align-items: flex-start;
@@ -235,6 +218,14 @@ body {
     cursor: pointer;
     box-shadow: inset 0 0 0 2px #EF76C3;
     transform: translateX(30%);
+}
+
+.btn_login:focus {
+    outline: none;
+}
+
+.btn_signup:focus {
+    outline: none;
 }
 
 .lets_go {

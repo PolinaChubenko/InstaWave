@@ -1,0 +1,11 @@
+.header_wrapper {
+    background: rgba(247, 213, 249, 0.43);
+    height: 65px;
+
+    display: grid;
+    grid-template-columns: 2fr 8fr 2fr;
+}
+
+.logo img {
+    width: 70px;
+}

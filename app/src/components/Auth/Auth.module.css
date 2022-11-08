@@ -1,0 +1,16 @@
+.body_auth_theme {
+    background: linear-gradient(180deg, rgba(232,83,185,1) 0%, rgba(60,134,248,1) 100%);
+}
+
+@font-face {
+    font-family: 'QuickenCondensedItalic';
+    src: url(./../../fonts/QuickenCondensedItalic.ttf)
+}
+
+.index_wrapper {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    /* ! */
+    grid-template-columns: 1fr 5fr 5fr 1fr;
+}

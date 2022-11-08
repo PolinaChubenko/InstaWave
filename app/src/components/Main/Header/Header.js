@@ -1,9 +1,14 @@
+import style from "./Header.module.css"
+import LogoImg from "../../LogoImg";
+
 const Header = () => {
     return (
-        <div className='header'>
-            <a href='app/src/components/Main/Header/Header#s'>Home</a>
-            <a href='app/src/components/Main/Header/Header#s'>News</a>
-            <a href='app/src/components/Main/Header/Header#s'>aaaaaaaaa</a>
+        <div className={style.header_wrapper}>
+            <div></div>
+            <div className={style.logo}>
+                <LogoImg/>
+            </div>
+            <div></div>
         </div>
     )
 }

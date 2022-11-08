@@ -1,4 +1,4 @@
-import style from "./InputBlock.module.css"
+import style from "./InputBlock.module.css";
 
 const InputBlock = (props) => {
     return (

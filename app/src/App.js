@@ -1,14 +1,12 @@
 import './App.css';
-import Header from './components/Main/Header/Header'
-import Profile from './components/Main/Profile/Profile';
 import Auth from "./components/Auth/Auth";
+import Main from "./components/Main/Main";
 
 const App = () => {
   return (
     <div className="App">
-      {/*<Header />*/}
-      {/*<Profile />*/}
-        <Auth />
+        {/*<Auth />*/}
+        <Main />
     </div>
   );
 }

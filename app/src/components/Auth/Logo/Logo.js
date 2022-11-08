@@ -1,10 +1,12 @@
-import style from './Logo.module.css'
+import LogoImg from "../../LogoImg";
+import style from './Logo.module.css';
+
 
 const Logo = () => {
     return (
         <div className={style.headline}>
             <p>instawave</p>
-            <img src={require("./../../../images/logo-final.png")}/>
+            <LogoImg />
         </div>
     )
 }

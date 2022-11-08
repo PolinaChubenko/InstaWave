@@ -1,0 +1,25 @@
+.body_main_theme {
+    background: white;
+}
+
+body {
+    background-image: url(./../../images/main_background.jpg);
+    background-attachment: fixed;
+}
+
+.main_wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.content_wrapper {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 8fr 2fr;
+}
+
+.main {
+    background: #F9E9FA;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
