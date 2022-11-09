@@ -1,8 +1,8 @@
 import style from "./Main.module.css";
-import Header from "./Header/Header";
 import {useEffect} from "react";
+import Header from "./Header/Header";
 
-const Main = () => {
+const Main = ({children}) => {
     useEffect(() => {
         const theme = style.body_main_theme;
         document.body.classList.add(theme);
@@ -14,14 +14,14 @@ const Main = () => {
 
     return (
         <div className={style.main_wrapper}>
-            <Header />
-            <div className={style.content_wrapper}>
-                <div></div>
-                <div className={style.main}>
-                    <p>Тут скоро будет наполнение, а пока вы читаете этот текст</p>
+            <Header/>
+                <div className={style.content_wrapper}>
+                    <div></div>
+                    <div className={style.main}>
+                        {children}
+                    </div>
+                    <div></div>
                 </div>
-            </div>
-
         </div>
     )
 }

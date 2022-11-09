@@ -1,13 +1,13 @@
 import Main from "../Main";
 
-const Profile = () => {
+const Settings = () => {
     return (
         <Main>
             <div>
-                Welcome home!
+                This is Settings
             </div>
         </Main>
     )
 }
 
-export default Profile;
+export default Settings;

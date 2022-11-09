@@ -1,13 +1,13 @@
 import Main from "../Main";
 
-const Profile = () => {
+const Search = () => {
     return (
         <Main>
             <div>
-                Welcome home!
+                This is Search
             </div>
         </Main>
     )
 }
 
-export default Profile;
+export default Search;

@@ -1,6 +1,8 @@
+import logo from "./../images/logo-final.png"
+
 const LogoImg = () => {
     return (
-        <img src={require("./../images/logo-final.png")}/>
+        <img alt='logo' src={logo}/>
     )
 }
 

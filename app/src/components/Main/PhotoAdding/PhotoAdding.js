@@ -1,13 +1,13 @@
 import Main from "../Main";
 
-const Profile = () => {
+const PhotoAdding = () => {
     return (
         <Main>
             <div>
-                Welcome home!
+                This is PhotoAdding
             </div>
         </Main>
     )
 }
 
-export default Profile;
+export default PhotoAdding;
