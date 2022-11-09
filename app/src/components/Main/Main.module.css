@@ -1,8 +1,4 @@
 .body_main_theme {
-    background: white;
-}
-
-body {
     background-image: url(./../../images/main_background.jpg);
     background-attachment: fixed;
 }

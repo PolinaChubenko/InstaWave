@@ -1,7 +1,17 @@
 import style from "./Main.module.css";
 import Header from "./Header/Header";
+import {useEffect} from "react";
 
 const Main = () => {
+    useEffect(() => {
+        const theme = style.body_main_theme;
+        document.body.classList.add(theme);
+
+        return () => {
+            document.body.classList.remove(theme);
+        }
+    }, [])
+
     return (
         <div className={style.main_wrapper}>
             <Header />
