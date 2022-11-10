@@ -1,0 +1,73 @@
+.profile_wrapper {
+    min-height: 250px;
+
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+.avatar_img {
+    display: block;
+    margin: auto;
+}
+
+.avatar_img img {
+    width: 200px;
+    height: 200px;
+    border-radius: 150px;
+}
+
+.info_wrapper {
+    padding-left: 20px;
+
+    display: grid;
+    grid-template-rows: 3fr 5fr 3fr;
+}
+
+.username_block {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', monospace;
+    font-weight: 800;
+    font-size: 40px;
+    letter-spacing: 0.2em;
+    color: #000000;
+}
+
+.subscribe {
+    margin: 0 5% 0 auto;
+    color: #89118B;
+    font-family: 'Ubuntu', monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.quote_block {
+    text-align: center;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 98% 100%;
+    background-image: url(../../../images/quote-cut.png);
+}
+
+.quote_block p {
+    position: relative;
+    top: 42%;
+    margin: auto;
+    padding: 0 15%;
+}
+
+.publications_block {
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+}
+
+.publications_block span {
+    font-weight: bold;
+}

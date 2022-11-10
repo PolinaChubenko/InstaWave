@@ -1,6 +1,7 @@
 .body_main_theme {
     background-image: url(../../images/main-background.jpg);
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .main_wrapper {
@@ -11,7 +12,7 @@
 .content_wrapper {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-columns: 2.5fr 7fr 2.5fr;
 }
 
 .main {
