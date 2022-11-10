@@ -1,11 +1,69 @@
 .header_wrapper {
     background: rgba(247, 213, 249, 0.43);
     height: 65px;
+    padding-top: 5px;
 
     display: grid;
-    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-columns: 2fr 3fr 1.5fr 2fr 1.5fr 2fr;
+}
+
+.logo {
+    display: flex;
 }
 
 .logo img {
     width: 70px;
+    height: 59px;
+    margin-right: 5px;
+}
+
+.logo p {
+    margin: 0;
+    height: 60px;
+
+    font-family: 'QuickenCondensedItalic', monospace;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 50px;
+    line-height: 65px;
+    color: #FFFFFF;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.search_block {
+    display: flex;
+    margin: auto;
+}
+
+.icons_block {
+    height: 60px;
+    display: flex;
+    margin: 5px auto;
+}
+
+.icon_link {
+    text-decoration: none;
+}
+
+.icon_svg_color {
+    fill: #F841B5;
+    transition: 0.2s;
+}
+
+.icon_svg_color:hover {
+    fill: #7EEC89;
+}
+
+.search_svg:hover {
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    transition: 0.2s;
+}
+
+.icon_svg {
+    margin: 5px;
+    height: 40px;
+    width: 40px;
 }
