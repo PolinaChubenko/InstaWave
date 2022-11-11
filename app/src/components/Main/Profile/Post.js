@@ -8,7 +8,11 @@ const Post = () => {
             <img alt='demo1' src={demo1} className={style.post_img} />
             <div className={style.post_description}>
                 <p>11.11.2022</p>
-                <img alt='like' src={like} className={style.post_description_like}/>
+                <div className={style.post_description_like}>
+                    <img alt='like' src={like}/>
+                    <div className={style.bottom_right}>13</div>
+                </div>
+
             </div>
         </div>
     )
