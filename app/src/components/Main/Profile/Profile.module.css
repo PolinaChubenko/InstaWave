@@ -82,23 +82,48 @@
 }
 
 .posts_table {
+    margin-bottom: 5%;
+}
+
+
+.posts_rows {
     margin-top: 2%;
 }
 
-.posts_column {
-    float: left;
-    width: 33.33%;
-    background-color:#aaa;
-    height: 300px;
-}
-
-.posts_column h2 {
-    margin: 5%;
-    background-color: #7EEC89;
-}
-
-.posts_row:after {
+.posts_rows:after {
     content: "";
     display: table;
     clear: both;
+}
+
+
+.posts_column {
+    margin-bottom: 1%;
+    float: left;
+    width: 33.333%;
+    height: 400px;
+    background: url(../../../images/photo-frame.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.post_img {
+    padding: 8%;
+    height: 70%;
+    width: 83%;
+}
+
+.post_description {
+    display: flex;
+    padding: 0 10%;
+}
+
+.post_description p {
+    margin: 0;
+}
+
+.post_description_like {
+    margin-left: auto;
+    margin-right: 5%;
+    height: 15%;
+    width: 15%;
 }
