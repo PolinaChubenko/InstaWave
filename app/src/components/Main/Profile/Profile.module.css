@@ -71,3 +71,34 @@
 .publications_block span {
     font-weight: bold;
 }
+
+
+
+
+
+.posts_wrapper {
+    display: grid;
+    grid-template-columns: 2.5fr 7fr 2.5fr;
+}
+
+.posts_table {
+    margin-top: 2%;
+}
+
+.posts_column {
+    float: left;
+    width: 33.33%;
+    background-color:#aaa;
+    height: 300px;
+}
+
+.posts_column h2 {
+    margin: 5%;
+    background-color: #7EEC89;
+}
+
+.posts_row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
