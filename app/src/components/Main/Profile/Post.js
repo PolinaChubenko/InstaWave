@@ -1,16 +1,18 @@
 import style from "./Profile.module.css";
-import demo1 from "../../../images/demo/demo1.jpg";
-import like from "../../../images/heart.png";
+import Like from "./Like";
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={style.posts_column}>
-            <img alt='demo1' src={demo1} className={style.post_img} />
+            <img className={style.post_img}
+                 src={props.post_src}
+                 alt={props.post_alt}
+            />
             <div className={style.post_description}>
-                <p>11.11.2022</p>
+                <p>{props.date}</p>
                 <div className={style.post_description_like}>
-                    <img alt='like' src={like}/>
-                    <div className={style.bottom_right}>13</div>
+                    <Like is_liked={props.is_liked} />
+                    <div className={style.bottom_right}>{props.likes_amount}</div>
                 </div>
 
             </div>

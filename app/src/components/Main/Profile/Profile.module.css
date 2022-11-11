@@ -138,6 +138,7 @@
 }
 
 .bottom_right {
-    margin-bottom: 0;
+    margin-bottom: -0.2em;
     margin-top: auto;
+    margin-left: -0.2em;
 }
