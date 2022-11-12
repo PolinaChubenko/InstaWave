@@ -10,7 +10,7 @@
 }
 
 .content_wrapper {
-    margin-top: 20px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: 2.5fr 7fr 2.5fr;
 }

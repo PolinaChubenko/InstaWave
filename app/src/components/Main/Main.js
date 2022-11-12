@@ -2,6 +2,7 @@ import React from 'react';
 import style from "./Main.module.css";
 import {useEffect} from "react";
 import Header from "./Header/Header";
+import cx from 'classnames';
 
 const Main = ({children}) => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const Main = ({children}) => {
                 <Header/>
                 <div className={style.content_wrapper}>
                     <div></div>
-                    <div className={style.main}>
+                    <div className={cx(style.main, 'Main')}>
                         {React.Children.map(children, (child, i) => {
                             if (i === 0) return child;
                         })}
