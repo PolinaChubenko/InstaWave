@@ -35,9 +35,6 @@ const Search = () => {
                     <Found />
                     <Found />
                     <Found />
-                    <Found />
-                    <Found />
-                    <Found />
                 </div>
             </div>
         </Main>

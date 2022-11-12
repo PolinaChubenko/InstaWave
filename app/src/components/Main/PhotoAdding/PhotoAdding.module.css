@@ -1,0 +1,90 @@
+.preview_wrapper {
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+}
+
+.upload_form {
+    margin-top: 2%;
+    width: 290px;
+}
+
+.image_upload {
+    align-items: center;
+    border: 3px solid #F841B5;
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    width: 290px;
+    height: 290px;
+}
+
+input[type="file"] {
+    display: none;
+    width: 290px;
+    height: 290px;
+}
+
+.photo_camera {
+    padding: 30%;
+    fill: #F841B5;
+    height: 100px;
+}
+
+.submit_button {
+    margin-top: 9%;
+    margin-left: 7%;
+    background: rgba(137, 17, 139, 0.67);
+    border-color: rgba(137, 17, 139, 0.67);
+    cursor: pointer;
+    border-radius: 50px;
+    width: 240px;
+    height: 56px;
+    outline: none;
+
+    font-family: 'Ubuntu', monospace;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+.image_preview {
+    margin-bottom: 1%;
+    float: left;
+    width: 33.333%;
+    height: 400px;
+    background: url(../../../images/photo-frame.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.image_preview img {
+    padding: 8%;
+    height: 70%;
+    width: 83%;
+}
+
+.preview_text {
+    margin: 40% 20% auto 20%;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: rgba(76, 76, 76, 0.62);
+    font-family: 'Ubuntu', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.arrow_to {
+    fill: #89118B;
+    margin: 10% 1% 0 1%;
+    height: 100px;
+    width: 200px;
+}
+

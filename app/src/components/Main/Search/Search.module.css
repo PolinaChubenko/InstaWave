@@ -1,5 +1,5 @@
 .main_height {
-    height: 860px;
+    height: 680px;
 }
 
 .search_wrapper {
@@ -46,7 +46,8 @@
 .result {
     display: flex;
     align-items: center;
-    margin-left: 2%;
+    margin: 1% 1% 1% 2%;
+    cursor: pointer;
 }
 
 .result:hover {
@@ -55,7 +56,7 @@
 
 .result_arrow {
     margin-right: 3%;
-    height: 50px;
+    height: 65px;
 }
 
 .avatar_img {
@@ -64,11 +65,17 @@
 }
 
 .avatar_img img {
-    width: 90px;
-    height: 90px;
+    width: 130px;
+    height: 130px;
     border-radius: 150px;
 }
 
-.info {
-
+.username {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', monospace;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 0.2em;
+    color: #000000;
 }

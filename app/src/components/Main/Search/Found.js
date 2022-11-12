@@ -10,8 +10,8 @@ const Found = () => {
             <div className={style.avatar_img}>
                 <img alt='avatar' src={avatar}/>
             </div>
-            <div className={style.info}>
-                <p>lina._.po</p>
+            <div>
+                <p className={style.username}>lina._.po</p>
                 <div>
                     <Subscribe is_subscribed={true}/>
                 </div>
