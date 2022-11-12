@@ -17,9 +17,9 @@
     outline: none;
     font-size: 25px;
 
-    background: url(../../../images/magnifier.svg) no-repeat scroll 7px 7px;
+    background: url(../../../images/magnifier.svg) whitesmoke no-repeat scroll 7px 7px;
     background-size: 35px 35px;
-    padding-left: 5%;
+    padding-left: 6%;
 }
 
 .search_result_block {
@@ -33,7 +33,7 @@
 }
 
 .search_result_block::-webkit-scrollbar-track {
-    background-color: #e4e4e4;
+    background-color: #dcdcdc;
     border-radius: 100px;
 }
 
@@ -43,10 +43,32 @@
     border-radius: 100px;
 }
 
+.result {
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
 .result:hover {
     fill: #2049D8;
 }
 
 .result_arrow {
+    margin-right: 3%;
     height: 50px;
+}
+
+.avatar_img {
+    display: block;
+    margin-right: 3%;
+}
+
+.avatar_img img {
+    width: 90px;
+    height: 90px;
+    border-radius: 150px;
+}
+
+.info {
+
 }

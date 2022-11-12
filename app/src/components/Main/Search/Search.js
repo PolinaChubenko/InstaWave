@@ -18,7 +18,7 @@ const Search = () => {
         <Main>
             <div className={style.search_wrapper}>
                 <div className={style.searcher}>
-                    <input/>
+                    <input placeholder="поиск по имени пользователя"/>
                 </div>
                 <div className={style.search_result_block}>
                     <Found />

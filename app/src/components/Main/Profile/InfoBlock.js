@@ -1,5 +1,6 @@
 import avatar from "./../../../images/main-background.jpg";
 import style from "./Profile.module.css";
+import Subscribe from "../Subscribe";
 
 const InfoBlock = () => {
     return (
@@ -10,7 +11,9 @@ const InfoBlock = () => {
             <div className={style.info_wrapper}>
                 <div className={style.username_block}>
                     <p className={style.username}>lina._.po</p>
-                    <p className={style.subscribe}>Подписаться</p>
+                    <div className={style.subscribe}>
+                        <Subscribe is_subscribed={false}/>
+                    </div>
                 </div>
                 <div className={style.quote_block}>
                     <p>какая-то очень умная цитата о том как крут vaprowave
