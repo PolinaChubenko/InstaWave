@@ -21,7 +21,7 @@
     height: 290px;
 }
 
-input[type="file"] {
+.image_input {
     display: none;
     width: 290px;
     height: 290px;

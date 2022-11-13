@@ -48,7 +48,7 @@ class PhotoAdding extends React.Component {
                         <form onSubmit={(e) => this._handleSubmit(e)}>
                             <label className={style.image_upload}
                                    onChange={(e) => this._handleImageChange(e)}>
-                                <input type="file"/>
+                                <input type="file" className={style.image_input}/>
                                 <PhotoCamera className={style.photo_camera}/>
                             </label>
                             <button className={style.submit_button}

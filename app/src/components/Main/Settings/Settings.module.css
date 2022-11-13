@@ -1,0 +1,90 @@
+.settings_wrapper {
+    margin: 2%;
+
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+}
+
+.preview_wrapper {
+    margin: auto;
+}
+
+.button_wrapper {
+    margin: 2%;
+    text-align: center;
+}
+
+.upload_form {
+    margin-top: 2%;
+}
+
+.description_form {
+    margin-top: 2%;
+}
+
+.image_upload {
+    align-items: center;
+    border: 3px solid #F841B5;
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.image_input {
+    display: none;
+}
+
+.avatar_img {
+    margin: 10%;
+    text-align: center;
+    display: block;
+}
+
+.avatar_img img {
+    width: 200px;
+    height: 200px;
+    border-radius: 150px;
+}
+
+
+.submit_button {
+    cursor: pointer;
+    background: rgba(137, 17, 139, 0.67);
+    border-color: rgba(137, 17, 139, 0.67);
+
+    width: 240px;
+    height: 56px;
+    outline: none;
+    border-radius: 50px;
+
+    font-family: 'Ubuntu', monospace;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+
+.input_block {
+    margin-bottom: 20px;
+}
+
+.input_block input {
+    display: block;
+    width: 90%;
+    /*margin-top: 8px;*/
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 16px;
+    line-height: 40px;
+    color: #3b4465;
+    background: #eef9fe;
+    border: 1px solid #cddbef;
+    border-radius: 2px;
+}
