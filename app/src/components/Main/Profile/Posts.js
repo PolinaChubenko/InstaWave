@@ -11,6 +11,8 @@ const Posts = () => {
                 <div className={style.posts_rows}>
                     <Post img_src={demo1} date={'10.10.2022'} likes_amount={'13'} is_liked={true}/>
                     <Post img_src={demo2} date={'09.10.2022'} likes_amount={'+99'} is_liked={false}/>
+                    <Post img_src={demo1} date={'10.10.2022'} likes_amount={'13'} is_liked={true}/>
+                    <Post img_src={demo1} date={'10.10.2022'} likes_amount={'13'} is_liked={true}/>
                 </div>
             </div>
             <div></div>
