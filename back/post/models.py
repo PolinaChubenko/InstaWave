@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
-from django.contrib.auth.models import User
 from blog.models import Blog
 from like.models import Like
+
 
 class Post(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)

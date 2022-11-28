@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Following(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
     following_user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers")
@@ -8,7 +9,7 @@ class Following(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['user_id','following_user_id'],
+                fields=['user_id', 'following_user_id'],
                 name="unique_followers"
             ),
             models.CheckConstraint(

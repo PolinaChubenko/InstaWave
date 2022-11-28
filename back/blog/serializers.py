@@ -1,11 +1,21 @@
 from rest_framework import serializers
 from .models import Blog
 from user.serializers import UserSerializer
+from post.serializers import PostSerializer
 
 
-class BLogSerializer(serializers.ModelSerializer):
+class BlogsSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
 
     class Meta:
         model = Blog
-        fields = ['id', 'user', 'quote', 'avatar']
+        fields = ['id', 'user', 'avatar']
+
+
+class BlogSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    post_set = PostSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Blog
+        fields = ['id', 'user', 'quote', 'avatar', 'post_set']
