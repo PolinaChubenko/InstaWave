@@ -7,5 +7,13 @@ class Blog(models.Model):
     quote = models.CharField(max_length=40)
     avatar = models.ImageField(upload_to="avatars", null=True)
 
+    @property
+    def total_followings(self):
+        return self.user.following.all().count()
+
+    @property
+    def total_followers(self):
+        return self.user.followers.all().count()
+
     def __str__(self) -> str:
         return str(self.user.username)
