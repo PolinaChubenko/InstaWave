@@ -12,3 +12,4 @@ class BlogViewSet(viewsets.ModelViewSet):
         if 'pk' in self.kwargs:
             return BlogSerializer
         return BlogsSerializer
+

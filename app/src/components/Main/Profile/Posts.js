@@ -3,16 +3,23 @@ import Post from "./Post";
 import demo1 from "../../../images/demo/demo1.jpg";
 import demo2 from "../../../images/demo/demo2.png";
 
-const Posts = () => {
+const Posts = (props) => {
+    const posts = []
+
+    props.post_set.forEach((post) => {
+        const postElement = (
+            <Post key={post.id} img_src={demo1} date_creation={post.date_creation}
+                  total_likes={post.total_likes} is_liked={true}/>
+        );
+        posts.push(postElement);
+    });
+
     return (
         <div className={style.posts_wrapper}>
             <div></div>
             <div className={style.posts_table}>
                 <div className={style.posts_rows}>
-                    <Post img_src={demo1} date={'10.10.2022'} likes_amount={'13'} is_liked={true}/>
-                    <Post img_src={demo2} date={'09.10.2022'} likes_amount={'+99'} is_liked={false}/>
-                    <Post img_src={demo1} date={'10.10.2022'} likes_amount={'13'} is_liked={true}/>
-                    <Post img_src={demo1} date={'10.10.2022'} likes_amount={'13'} is_liked={true}/>
+                    {posts}
                 </div>
             </div>
             <div></div>

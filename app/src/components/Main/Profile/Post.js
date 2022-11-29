@@ -4,9 +4,9 @@ import PostDescription from "./PostDescription";
 
 const Post = (props) => {
     return (
-        <div className={style.posts_column}>
+        <div className={style.posts_column} key={props.key}>
             <PostImage post_src={props.img_src}/>
-            <PostDescription date={props.date} is_liked={props.is_liked} likes_amount={props.likes_amount}/>
+            <PostDescription date_creation={props.date_creation} is_liked={props.is_liked} total_likes={props.total_likes}/>
         </div>
     )
 }

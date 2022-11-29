@@ -2,7 +2,7 @@ import avatar from "./../../../images/main-background.jpg";
 import style from "./Profile.module.css";
 import Subscribe from "../Subscribe";
 
-const InfoBlock = () => {
+const InfoBlock = (props) => {
     return (
         <div className={style.profile_wrapper}>
             <div className={style.avatar_img}>
@@ -10,19 +10,18 @@ const InfoBlock = () => {
             </div>
             <div className={style.info_wrapper}>
                 <div className={style.username_block}>
-                    <p className={style.username}>lina._.po</p>
+                    <p className={style.username}>{props.username}</p>
                     <div className={style.subscribe}>
                         <Subscribe is_subscribed={false}/>
                     </div>
                 </div>
                 <div className={style.quote_block}>
-                    <p>какая-то очень умная цитата о том как крут vaprowave
-                        ну очень крут он :)</p>
+                    <p>{props.quote}</p>
                 </div>
                 <div className={style.publications_block}>
-                    <p>Публикаций: <span>10</span></p>
-                    <p>Подписчиков: <span>10</span></p>
-                    <p>Подписок: <span>10</span></p>
+                    <p>Публикаций: <span>{props.posts}</span></p>
+                    <p>Подписчиков: <span>{props.total_followers}</span></p>
+                    <p>Подписок: <span>{props.total_followings}</span></p>
                 </div>
             </div>
         </div>

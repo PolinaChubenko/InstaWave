@@ -1,0 +1,45 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "username": "prom",
+        "email": ""
+      },
+      "quote": "instawave",
+      "post_set": [
+        {
+          "id": 1,
+          "date_creation": "2022-11-22",
+          "total_likes": 2
+        }
+      ],
+      "total_followings": 1,
+      "total_followers": 1
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 2,
+        "username": "lina",
+        "email": ""
+      },
+      "quote": "qwerty",
+      "post_set": [
+        {
+          "id": 2,
+          "date_creation": "2022-11-28",
+          "total_likes": 0
+        },
+        {
+          "id": 3,
+          "date_creation": "2022-11-30",
+          "total_likes": 1
+        }
+      ],
+      "total_followings": 1,
+      "total_followers": 1
+    }
+  ]
+}

@@ -13,7 +13,7 @@ class Like(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['user','object_id'],
+                fields=['user', 'object_id'],
                 name="unique_likes"
             ),
         ]
