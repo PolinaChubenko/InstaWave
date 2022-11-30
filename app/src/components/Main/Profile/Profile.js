@@ -20,8 +20,8 @@ const Profile = () => {
         <Main>
             {
                 blog ? <InfoBlock username={blog.user.username} total_followings={blog.total_followings}
-                                  total_followers={blog.total_followers} posts={10}
-                                  quote={blog.quote}/>
+                                  total_followers={blog.total_followers} total_posts={blog.total_posts}
+                                  quote={blog.quote} avatar={blog.avatar}/>
                     : <Loader/>
             }
             {

@@ -1,4 +1,3 @@
-import avatar from "./../../../images/main-background.jpg";
 import style from "./Profile.module.css";
 import Subscribe from "../Subscribe";
 
@@ -6,7 +5,7 @@ const InfoBlock = (props) => {
     return (
         <div className={style.profile_wrapper}>
             <div className={style.avatar_img}>
-                <img alt='avatar' src={avatar}/>
+                <img alt='avatar' src={props.avatar}/>
             </div>
             <div className={style.info_wrapper}>
                 <div className={style.username_block}>
@@ -19,7 +18,7 @@ const InfoBlock = (props) => {
                     <p>{props.quote}</p>
                 </div>
                 <div className={style.publications_block}>
-                    <p>Публикаций: <span>{props.posts}</span></p>
+                    <p>Публикаций: <span>{props.total_posts}</span></p>
                     <p>Подписчиков: <span>{props.total_followers}</span></p>
                     <p>Подписок: <span>{props.total_followings}</span></p>
                 </div>

@@ -1,14 +1,12 @@
 import style from "./Profile.module.css";
 import Post from "./Post";
-import demo1 from "../../../images/demo/demo1.jpg";
-import demo2 from "../../../images/demo/demo2.png";
 
 const Posts = (props) => {
     const posts = []
 
     props.post_set.forEach((post) => {
         const postElement = (
-            <Post key={post.id} img_src={demo1} date_creation={post.date_creation}
+            <Post key={post.id} image={post.image} date_creation={post.date_creation}
                   total_likes={post.total_likes} is_liked={true}/>
         );
         posts.push(postElement);
