@@ -63,7 +63,7 @@ class Settings extends React.Component {
                             <form>
                                 <InputBlock text={"новое имя пользователя"} type={"username"}/>
                                 <InputBlock text={"новая почта"} type={"username"}/>
-                                <InputBlock text={"цитата"} type={"username"} maxLength={5}/>
+                                <InputBlock text={"цитата"} type={"username"} maxLength={40}/>
                             </form>
                         </div>
                     </div>

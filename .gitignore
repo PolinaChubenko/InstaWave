@@ -2,6 +2,7 @@
 
 env
 .idea
+app/.env
 
 # dependencies
 /app/node_modules
