@@ -14,14 +14,14 @@ const Profile = () => {
         ajaxService(`/blogs/${params.id}`).then((data) => {
             setBlog(data);
         });
-    }, [])
+    }, [params])
 
     return (
         <Main>
             {
                 blog ? <InfoBlock username={blog.user.username} total_followings={blog.total_followings}
                                   total_followers={blog.total_followers} total_posts={blog.total_posts}
-                                  quote={blog.quote} avatar={blog.avatar}/>
+                                  quote={blog.quote} avatar={blog.avatar} key={blog.id} is_subscribed={false}/>
                     : <Loader/>
             }
             {

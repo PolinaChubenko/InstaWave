@@ -11,7 +11,7 @@ const InfoBlock = (props) => {
                 <div className={style.username_block}>
                     <p className={style.username}>{props.username}</p>
                     <div className={style.subscribe}>
-                        <Subscribe is_subscribed={false}/>
+                        <Subscribe is_subscribed={props.is_subscribed}/>
                     </div>
                 </div>
                 <div className={style.quote_block}>

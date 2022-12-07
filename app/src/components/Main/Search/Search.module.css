@@ -79,3 +79,7 @@
     letter-spacing: 0.2em;
     color: #000000;
 }
+
+.link_to_found {
+    text-decoration: none;
+}

@@ -1,24 +1,24 @@
 import style from "./Search.module.css";
 import {ReactComponent as Arrow} from "./../../../images/found-arrow.svg";
-import avatar from "../../../images/main-background.jpg";
 import Subscribe from "../Subscribe";
+import {Link} from "react-router-dom";
 
-const Found = () => {
+const Found = (props) => {
     return (
-        <div className={style.result}>
-            <Arrow className={style.result_arrow}/>
-            <div className={style.avatar_img}>
-                <img alt='avatar' src={avatar}/>
-            </div>
-            <div>
-                <p className={style.username}>lina._.po</p>
+        <Link to={`/profile/${props.id}`} className={style.link_to_found}>
+            <div className={style.result} id={props.id}>
+                <Arrow className={style.result_arrow}/>
+                <div className={style.avatar_img}>
+                    <img alt='avatar' src={props.avatar}/>
+                </div>
                 <div>
-                    <Subscribe is_subscribed={true}/>
+                    <p className={style.username}>{props.username}</p>
+                    <div className={style.is_subscribed}>
+                        <Subscribe is_subscribed={props.is_subscribed}/>
+                    </div>
                 </div>
             </div>
-
-        </div>
-
+        </Link>
     )
 }
 

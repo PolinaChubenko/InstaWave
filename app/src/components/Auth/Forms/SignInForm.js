@@ -15,7 +15,7 @@ const SignInForm = () => {
                 <InputBlock text={"пароль"} id={"login_password"} type={"password"}/>
                 <ForgotPassword/>
             </fieldset>
-            <Link to='/profile' style={{textDecoration: 'none'}}>
+            <Link to='/search' style={{textDecoration: 'none'}}>
                 <button type="submit" className={style.btn_login}>войти</button>
             </Link>
         </form>

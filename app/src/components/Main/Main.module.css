@@ -20,3 +20,19 @@
     border-radius: 20px;
     padding: 10px 20px;
 }
+
+.is_subscribed {
+    color: #89118B;
+}
+
+.is_subscribed:active {
+    color: #89118B;
+}
+
+.is_not_subscribed {
+    color: darkgrey;
+}
+
+.is_not_subscribed:active {
+    color: darkgrey;
+}
