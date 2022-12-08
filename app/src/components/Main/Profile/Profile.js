@@ -11,7 +11,7 @@ const Profile = () => {
     const params = useParams();
 
     useEffect(() => {
-        ajaxService(`/blogs/${params.id}`).then((data) => {
+        ajaxService(`/blogs/${params.id}/`).then((data) => {
             setBlog(data);
         });
     }, [params])

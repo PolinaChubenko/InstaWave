@@ -1,10 +1,9 @@
 import style from "./ForgotPassword.module.css"
 
-const ForgotPassword = () => {
+const ForgotPassword = (props) => {
     return (
         <div className={style.forgot_block}>
-            <span></span>
-            <a href="" className={style.forgot_link}>забыли ваш пароль?</a>
+            <p className={style.forgot_link}>{props.error}</p>
         </div>
     )
 }

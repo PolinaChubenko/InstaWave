@@ -11,11 +11,16 @@ const Search = () => {
         main[0].classList.add(height);
 
         return () => {
-            main[0].classList.remove(height);
+            main[0]?.classList.remove(height);
         }
     }, []);
 
     const [blogs, setBlogs] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const handleChange = event => {
+        setSearchTerm(event.target.value);
+    };
 
     useEffect(() => {
         ajaxService('/blogs/').then((data) => {
@@ -38,14 +43,22 @@ const Search = () => {
         });
     }, []);
 
+    const founded_blogs = !searchTerm
+        ? blogs
+        : blogs.filter(blog =>
+            blog.props.username.toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+
+    const nothing_founded = <p style={{textAlign: 'center'}}>увы, ничего не найдено</p>
+
     return (
         <Main>
             <div className={style.search_wrapper}>
                 <div className={style.searcher}>
-                    <input placeholder="поиск по имени пользователя"/>
+                    <input placeholder="поиск по имени пользователя"
+                           value={searchTerm} onChange={handleChange}/>
                 </div>
                 <div className={style.search_result_block}>
-                    {blogs}
+                    {(founded_blogs && founded_blogs.length === 0 ? nothing_founded : founded_blogs )}
                 </div>
             </div>
         </Main>
