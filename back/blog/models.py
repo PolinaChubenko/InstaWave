@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 class Blog(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    quote = models.CharField(max_length=40)
-    avatar = models.ImageField(upload_to="avatars", null=True)
+    quote = models.CharField(max_length=40, default='Теперь я тоже в instawave')
+    avatar = models.ImageField(upload_to="avatars", default='avatars/default_avatar.png')
 
     @property
     def total_followings(self):
