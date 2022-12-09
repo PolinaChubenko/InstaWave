@@ -3,16 +3,19 @@ import InfoBlock from "./InfoBlock";
 import Posts from "./Posts";
 import {ajaxService} from '../../../services/ajaxService'
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import Loader from "../../Loader";
 
 const Profile = () => {
     const [blog, setBlog] = useState(null)
     const params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         ajaxService(`/blogs/${params.id}/`).then((data) => {
             setBlog(data);
+        }).catch(() => {
+            navigate("/", {replace: true});
         });
     }, [params])
 

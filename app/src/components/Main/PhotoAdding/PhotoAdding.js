@@ -1,70 +1,90 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Main from "../Main";
 import style from "./PhotoAdding.module.css"
 import {ReactComponent as PhotoCamera} from "./../../../images/photo-camera.svg";
 import {ReactComponent as ArrowTo} from "./../../../images/arrow-to.svg";
+import {useNavigate} from "react-router-dom";
+import {isLogin} from "../../../utils/isLogin";
+import {ajaxService} from "../../../services/ajaxService";
+import ForgotPassword from "../../Auth/ForgotPassword/ForgotPassword";
 
-class PhotoAdding extends React.Component {
+// import {useNavigate} from "react-router-dom";
 
-    constructor(props) {
-        super(props);
-        this.state = {file: '', imagePreviewUrl: ''};
-    }
+const PhotoAdding = () => {
+    const [file, setFile] = useState(null);
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+    const [user, setUser] = useState(null);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    _handleSubmit(e) {
+    useEffect(() => {
+        if (isLogin()) {
+            ajaxService('/user/current').then((data) => {
+                setUser(data);
+            });
+        }
+    }, []);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(file);
+        console.log(user.id);
+        const formData = new FormData();
+        if (!file) {
+            setError("пост не был добавлен");
+            return;
+        }
+        formData.append('image', file);
+        // ajaxService("/post/", {
+        //     method: 'POST',
+        //     body: formData
+        // }).then(() => {
+        //     // navigate(`/profile/${user.id}/`, {replace: true});
+        // });
+    };
+
+
+    const handleImageChange = (e) => {
         e.preventDefault();
-        console.log('handle uploading-', this.state.file);
-    }
-
-    _handleImageChange(e) {
-        e.preventDefault();
-
+        setError('');
         let reader = new FileReader();
         let file = e.target.files[0];
 
         reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imagePreviewUrl: reader.result
-            });
+            setFile(file);
+            setImagePreviewUrl(reader.result);
         }
         reader.readAsDataURL(file)
     }
 
-    render() {
-        let {imagePreviewUrl} = this.state;
-        let $imagePreview = null;
-        if (imagePreviewUrl) {
-            $imagePreview = (<img alt="previewer" src={imagePreviewUrl}/>);
-        } else {
-            $imagePreview = (<div className={style.preview_text}>здесь отобразится
-                загруженное вами изображение</div>);
-        }
-
-        return (
-            <Main>
+    return (
+        <Main>
+            <div>
                 <div className={style.preview_wrapper}>
                     <div className={style.upload_form}>
-                        <form onSubmit={(e) => this._handleSubmit(e)}>
+                        <form onSubmit={handleSubmit}>
                             <label className={style.image_upload}
-                                   onChange={(e) => this._handleImageChange(e)}>
+                                   onChange={handleImageChange}>
                                 <input type="file" className={style.image_input}/>
                                 <PhotoCamera className={style.photo_camera}/>
                             </label>
-                            <button className={style.submit_button}
-                                    type="submit"
-                                    onClick={(e) => this._handleSubmit(e)}>опубликовать
-                            </button>
                         </form>
+                        <button className={style.submit_button}
+                                type="submit"
+                                onClick={handleSubmit}>опубликовать
+                        </button>
                     </div>
                     <ArrowTo className={style.arrow_to}/>
                     <div className={style.image_preview}>
-                        {$imagePreview}
+                        {imagePreviewUrl ?
+                            <img alt="previewer" src={imagePreviewUrl}/> :
+                            <div className={style.preview_text}>здесь отобразится загруженное вами изображение</div>}
                     </div>
                 </div>
-            </Main>
-        )
-    }
+                <ForgotPassword error={error}/>
+            </div>
+        </Main>
+    )
 }
 
 export default PhotoAdding;

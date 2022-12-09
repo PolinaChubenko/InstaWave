@@ -12,7 +12,7 @@ const Main = ({children}) => {
         return () => {
             document.body.classList.remove(theme);
         }
-    }, [])
+    }, []);
 
     return (
         <div>

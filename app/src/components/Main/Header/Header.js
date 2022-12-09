@@ -7,8 +7,25 @@ import {ReactComponent as Profile} from "./../../../images/profile.svg";
 import {ReactComponent as Tools} from "./../../../images/tools.svg";
 import {ReactComponent as PhotoAdding} from "./../../../images/photo-add.svg";
 import {ReactComponent as Search} from "./../../../images/search-title.svg";
+import {useEffect, useState} from "react";
+import {isLogin} from "../../../utils/isLogin";
+import {ajaxService} from "../../../services/ajaxService";
 
 const Header = () => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        if (isLogin()) {
+            ajaxService('/user/current').then((data) => {
+                setUser(data);
+            });
+        }
+    }, []);
+
+    function onLogout() {
+        window.localStorage.setItem('ACCESS', '');
+    }
+
     return (
         <div className={style.header_wrapper}>
             <div></div>
@@ -20,9 +37,9 @@ const Header = () => {
                 <Link to='/search'> <Search className={cx(style.icon_svg_color, style.search_svg)} height='80px'/> </Link>
             </div>
             <div className={style.icons_block}>
-                <Link to='/profile' className={style.icon_link}>
+                {user ? <Link to={`/profile/${user.id}/`} className={style.icon_link}>
                     <Profile className={cx(style.icon_svg, style.icon_svg_color)}/>
-                </Link>
+                </Link> : <p></p>}
                 <Link to='/adding' className={style.icon_link}>
                     <PhotoAdding className={cx(style.icon_svg, style.icon_svg_color)}/>
                 </Link>
@@ -32,7 +49,7 @@ const Header = () => {
                     <Tools className={cx(style.icon_svg, style.icon_svg_color)}/>
                 </Link>
                 <Link to='/' className={style.icon_link}>
-                    <ExitDoor className={cx(style.icon_svg, style.icon_svg_color)}/>
+                    <ExitDoor onClick={onLogout} className={cx(style.icon_svg, style.icon_svg_color)}/>
                 </Link>
             </div>
             <div></div>

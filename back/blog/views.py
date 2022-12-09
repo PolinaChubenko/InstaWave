@@ -14,3 +14,11 @@ class BlogViewSet(viewsets.ModelViewSet):
             return BlogSerializer
         return BlogsSerializer
 
+    def perform_create(self, serializer):
+        serializer.validated_data['user'] = self.request.user
+        return super().perform_create(serializer)
+
+    def perform_update(self, serializer):
+        serializer.validated_data['user'] = self.request.user
+        return super().perform_update(serializer)
+

@@ -29,8 +29,8 @@ const SignInForm = () => {
                 'Content-Type': 'application/json'
             }
         }).then((data) => {
-            window.sessionStorage.setItem("ACCESS", data.access);
-            window.sessionStorage.setItem("REFRESH", data.refresh);
+            window.localStorage.setItem("ACCESS", data.access);
+            window.localStorage.setItem("REFRESH", data.refresh);
             navigate("search", {replace: true});
         }).catch(() => {
             setError("неверные данные")

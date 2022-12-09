@@ -3,6 +3,7 @@ import style from "./Search.module.css";
 import {useEffect, useState} from "react";
 import Found from "./Found";
 import {ajaxService} from '../../../services/ajaxService'
+import {useNavigate} from "react-router-dom";
 
 const Search = () => {
     useEffect(() => {
@@ -17,8 +18,9 @@ const Search = () => {
 
     const [blogs, setBlogs] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate();
 
-    const handleChange = event => {
+    const handleChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
@@ -40,6 +42,8 @@ const Search = () => {
             });
 
             setBlogs(blogs);
+        }).catch(() => {
+            navigate("/", {replace: true});
         });
     }, []);
 
