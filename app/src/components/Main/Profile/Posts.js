@@ -6,8 +6,13 @@ const Posts = (props) => {
 
     props.post_set.forEach((post) => {
         const postElement = (
-            <Post key={post.id} image={post.image} date_creation={post.date_creation}
-                  total_likes={post.total_likes} is_liked={true}/>
+            <Post key={post.id}
+                  image={post.image}
+                  date_creation={post.date_creation}
+                  total_likes={post.total_likes}
+                  is_liked={true}
+                  blog_id={props.blog_id}
+                  cur_user={props.cur_user}/>
         );
         posts.push(postElement);
     });

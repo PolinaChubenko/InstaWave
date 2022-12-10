@@ -16,12 +16,8 @@ export function ajaxService(url, params = {}) {
                 }
             }).then((data) => {
                 window.localStorage.setItem('ACCESS', data.access);
-                let accessToken = window.localStorage.getItem('ACCESS');
-                let newParams = params;
-                if (accessToken) {
-                    newParams = { ...params,
-                        headers: {...params.headers, 'Authorization': `Bearer ${accessToken}`} };
-                }
+                newParams = { ...params,
+                    headers: {...params.headers, 'Authorization': `Bearer ${data.access}`} };
                 return fetch(`${process.env.REACT_APP_API}/api` + url, newParams).then((data) => {
                     if (data.ok) {
                         return data.json();

@@ -24,6 +24,7 @@ const Header = () => {
 
     function onLogout() {
         window.localStorage.setItem('ACCESS', '');
+        window.localStorage.setItem('REFRESH', '');
     }
 
     return (

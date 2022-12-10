@@ -3,10 +3,13 @@ import Like from "./Like";
 import {useState} from "react";
 
 const PostDescription = (props) => {
+    const blogId = props.blog_id;
     const [like, set_like] = useState(false);
 
     function handleClick(e) {
         e.preventDefault();
+        console.log('it is', blogId);
+        console.log('i am', props.cur_user.id);
         like ? set_like(false) : set_like(true);
     }
 

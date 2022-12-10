@@ -5,9 +5,11 @@ import {ajaxService} from '../../../services/ajaxService'
 import {useEffect, useState} from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import Loader from "../../Loader";
+import {isLogin} from "../../../utils/isLogin";
 
 const Profile = () => {
-    const [blog, setBlog] = useState(null)
+    const [blog, setBlog] = useState(null);
+    const [user, setUser] = useState(null);
     const params = useParams();
     const navigate = useNavigate();
 
@@ -19,6 +21,14 @@ const Profile = () => {
         });
     }, [params])
 
+    useEffect(() => {
+        if (isLogin()) {
+            ajaxService('/user/current').then((data) => {
+                setUser(data);
+            });
+        }
+    }, []);
+
     return (
         <Main>
             {
@@ -28,7 +38,7 @@ const Profile = () => {
                     : <Loader/>
             }
             {
-                blog ? <Posts post_set={blog.post_set}/> : <Loader/>
+                blog ? <Posts post_set={blog.post_set} blog_id={params.id} cur_user={user}/> : <Loader/>
             }
 
         </Main>
