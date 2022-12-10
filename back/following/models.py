@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 class Following(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
-    following_user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
+    following_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers")
 
     class Meta:
         constraints = [
@@ -19,5 +19,5 @@ class Following(models.Model):
         ]
 
     def __str__(self) -> str:
-        return f"{self.user_id.username} follows {self.following_user_id.username}"
+        return f"{self.user.username} follows {self.following_user.username}"
 

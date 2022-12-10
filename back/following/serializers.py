@@ -4,9 +4,13 @@ from user.serializers import UserSerializer
 
 
 class FollowingSerializer(serializers.ModelSerializer):
-    user_id = UserSerializer(read_only=True)
-    following_user_id = UserSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Following
-        fields = ['id', 'user_id', 'following_user_id']
+        fields = ['id', 'user', 'following_user']
+
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['following_user'] = UserSerializer(instance.following_user).data
+        return response

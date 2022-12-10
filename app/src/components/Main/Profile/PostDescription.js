@@ -1,15 +1,36 @@
 import style from "./Profile.module.css";
 import Like from "./Like";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {isLogin} from "../../../utils/isLogin";
+import {ajaxService} from "../../../services/ajaxService";
 
 const PostDescription = (props) => {
-    const blogId = props.blog_id;
+    const postId = props.post_id;
     const [like, set_like] = useState(false);
 
     function handleClick(e) {
         e.preventDefault();
-        console.log('it is', blogId);
-        console.log('i am', props.cur_user.id);
+        console.log('it is', postId);
+        if (!like) {
+            console.log('we are in');
+            // ajaxService(`/post/?id=${postId}`).then((data) => {
+            //     console.log(data);
+            //     ajaxService(`/like/`, {
+            //         method: 'POST',
+            //         body: JSON.stringify({ content_object: data }),
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         }
+            //     }).then();
+            // });
+            // ajaxService(`/like/`, {
+            //     method: 'POST',
+            //     body: JSON.stringify({ content_object: `/post/?id=${postId}` }),
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     }
+            // }).then();
+        }
         like ? set_like(false) : set_like(true);
     }
 

@@ -42,7 +42,7 @@ const PhotoAdding = () => {
                 method: 'POST',
                 body: formData
             }).then(() => {
-                navigate(`/profile/${user.id}/`, {replace: true});
+                navigate(`/profile/${blog_id}/`, {replace: true});
             });
         });
     };

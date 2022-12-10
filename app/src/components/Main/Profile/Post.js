@@ -9,8 +9,7 @@ const Post = (props) => {
             <PostDescription date_creation={props.date_creation}
                              is_liked={props.is_liked}
                              total_likes={props.total_likes}
-                             blog_id={props.blog_id}
-                             cur_user={props.cur_user}/>
+                             post_id={props.post_id}/>
         </div>
     )
 }

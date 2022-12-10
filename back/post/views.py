@@ -7,6 +7,11 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-    def perform_create(self, serializer):\
+    def get_queryset(self):
+        if 'id' in self.request.query_params:
+            return Post.objects.filter(id=self.request.query_params['id'])
+        return super().get_queryset()
+
+    def perform_create(self, serializer):
         return super().perform_create(serializer)
 

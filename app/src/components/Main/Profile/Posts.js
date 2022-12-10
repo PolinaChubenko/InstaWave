@@ -11,8 +11,7 @@ const Posts = (props) => {
                   date_creation={post.date_creation}
                   total_likes={post.total_likes}
                   is_liked={true}
-                  blog_id={props.blog_id}
-                  cur_user={props.cur_user}/>
+                  post_id={post.id}/>
         );
         posts.push(postElement);
     });

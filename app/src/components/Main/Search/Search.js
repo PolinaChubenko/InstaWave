@@ -42,9 +42,10 @@ const Search = () => {
             });
 
             setBlogs(blogs);
-        }).catch(() => {
-            navigate("/", {replace: true});
         });
+    // .catch(() => {
+    //         navigate("/", {replace: true});
+    //     })
     }, []);
 
     const founded_blogs = !searchTerm

@@ -12,12 +12,15 @@ import {isLogin} from "../../../utils/isLogin";
 import {ajaxService} from "../../../services/ajaxService";
 
 const Header = () => {
-    const [user, setUser] = useState(null);
+    const [blogId, setBlogId] = useState(null);
 
     useEffect(() => {
         if (isLogin()) {
             ajaxService('/user/current').then((data) => {
-                setUser(data);
+                ajaxService(`/blogs/?user=${data['id']}`).then((data) => {
+                    const blog_id = data[0].id;
+                    setBlogId(blog_id);
+                });
             });
         }
     }, []);
@@ -38,7 +41,7 @@ const Header = () => {
                 <Link to='/search'> <Search className={cx(style.icon_svg_color, style.search_svg)} height='80px'/> </Link>
             </div>
             <div className={style.icons_block}>
-                {user ? <Link to={`/profile/${user.id}/`} className={style.icon_link}>
+                {blogId ? <Link to={`/profile/${blogId}/`} className={style.icon_link}>
                     <Profile className={cx(style.icon_svg, style.icon_svg_color)}/>
                 </Link> : <p></p>}
                 <Link to='/adding' className={style.icon_link}>

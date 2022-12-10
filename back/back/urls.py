@@ -20,6 +20,8 @@ from rest_framework import routers
 from django.conf.urls.static import static
 from blog.views import BlogViewSet
 from post.views import PostViewSet
+from like.views import LikeViewSet
+from following.views import FollowingViewSet
 from user.views import CurrentUser, UserViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -30,6 +32,8 @@ router = routers.DefaultRouter()
 router.register(r'blogs', BlogViewSet)
 router.register(r'post', PostViewSet)
 router.register(r'user', UserViewSet)
+router.register(r'like', LikeViewSet)
+router.register(r'following', FollowingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
