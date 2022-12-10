@@ -14,8 +14,11 @@ const Profile = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        ajaxService(`/blogs/${params.id}/`).then((data) => {
-            setBlog(data);
+        ajaxService(`/blogs/?user=${params.id}`).then((data) => {
+            const blog_id = data[0].id;
+            ajaxService(`/blogs/${blog_id}/`).then((data) => {
+                setBlog(data);
+            });
         }).catch(() => {
             navigate("/", {replace: true});
         });

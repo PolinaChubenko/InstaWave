@@ -36,11 +36,14 @@ const Settings = () => {
             setError("никаких изменений не было сделано");
             return;
         }
-        ajaxService(`/blogs/${user.id}/`, {
-            method: 'PUT',
-            body: formData
-        }).then(() => {
-            navigate(`/profile/${user.id}/`, {replace: true});
+        ajaxService(`/blogs/?user=${user.id}`).then((data) => {
+            const blog_id = data[0].id;
+            ajaxService(`/blogs/${blog_id}/`, {
+                method: 'PUT',
+                body: formData
+            }).then(() => {
+                navigate(`/profile/${user.id}/`, {replace: true});
+            });
         });
     };
 

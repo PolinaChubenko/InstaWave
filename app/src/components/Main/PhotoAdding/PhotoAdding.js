@@ -35,11 +35,15 @@ const PhotoAdding = () => {
             return;
         }
         formData.append('image', file);
-        ajaxService("/post/", {
-            method: 'POST',
-            body: formData
-        }).then(() => {
-            // navigate(`/profile/${user.id}/`, {replace: true});
+        ajaxService(`/blogs/?user=${user.id}`).then((data) => {
+            const blog_id = data[0].id;
+            formData.append('blog', blog_id);
+            ajaxService(`/post/`, {
+                method: 'POST',
+                body: formData
+            }).then(() => {
+                navigate(`/profile/${user.id}/`, {replace: true});
+            });
         });
     };
 

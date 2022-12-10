@@ -7,7 +7,6 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-    def perform_create(self, serializer):
-        serializer.validated_data['blog'] = self.request.user.blog
+    def perform_create(self, serializer):\
         return super().perform_create(serializer)
 

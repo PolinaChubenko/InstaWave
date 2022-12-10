@@ -28,8 +28,7 @@ const SignUpForm = () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then((data) => {
-            console.log(data);
+        }).then(() => {
             ajaxAuthService('/token/', {
                 method: 'POST',
                 body: JSON.stringify({ username: login, password: password }),
@@ -44,7 +43,10 @@ const SignUpForm = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     }
-                }).then();
+                }).then(() => {
+                    window.location.reload();
+                }
+                );
             });
         }).catch(() => {
             setError("что-то пошло не так");

@@ -9,6 +9,11 @@ class BlogViewSet(viewsets.ModelViewSet):
     serializer_class = BlogSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_queryset(self):
+        if 'user' in self.request.query_params:
+            return Blog.objects.filter(user_id=self.request.query_params['user'])
+        return super().get_queryset()
+
     def get_serializer_class(self):
         if 'pk' in self.kwargs:
             return BlogSerializer
