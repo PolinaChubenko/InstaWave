@@ -25,7 +25,7 @@ const PostDescription = (props) => {
             // });
             // ajaxService(`/like/`, {
             //     method: 'POST',
-            //     body: JSON.stringify({ content_object: `/post/?id=${postId}` }),
+            //     body: JSON.stringify({ object_id: postId }),
             //     headers: {
             //         'Content-Type': 'application/json'
             //     }

@@ -5,48 +5,47 @@ import {useEffect, useState} from "react";
 
 const InfoBlock = (props) => {
     const blogUserId = props.blog_user_id;
-    const currentUserId = props.current_user_id;
+    const [subscriptionId, setSubscriptionId] = useState(null);
+    const [currentUserId, setCurrentUserId] = useState(null);
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [myBlog, setMyBlog] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        ajaxService('/following/', {
-            method: 'POST',
-            body: JSON.stringify({ following_user: blogUserId }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(() => {
-            ajaxService(`/following/?id=${currentUserId}`).then((data) => {
-                const subscriptions = [];
-                data.forEach((subscription) => {
-                    subscriptions.push(subscription.following_user.id);
-                });
-                if (subscriptions.indexOf(blogUserId) > -1) {
-                    setIsSubscribed(true);
-                } else {
-                    setIsSubscribed(false);
+        if (isSubscribed) {
+            ajaxService(`/following/${subscriptionId}/`, {
+                method: 'DELETE',
+            }).then();
+            setIsSubscribed(false);
+            setSubscriptionId(null);
+        } else {
+            ajaxService('/following/', {
+                method: 'POST',
+                body: JSON.stringify({ following_user: blogUserId }),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            })
-        });
+            }).then();
+            setIsSubscribed(true);
+        }
     }
 
     useEffect(() => {
         if (currentUserId === blogUserId) {
             setMyBlog(true);
+            return;
         }
-        ajaxService(`/following/?id=${currentUserId}`).then((data) => {
-            const subscriptions = [];
-            data.forEach((subscription) => {
-                subscriptions.push(subscription.following_user.id);
-            });
-            if (subscriptions.indexOf(blogUserId) > -1) {
-                setIsSubscribed(true);
-            } else {
+        ajaxService('/user/current').then((data) => {
+            setCurrentUserId(data['id']);
+        });
+        ajaxService(`/following/?who=${currentUserId}&whom=${blogUserId}`).then((data) => {
+            if (Object.keys(data).length === 0) {
                 setIsSubscribed(false);
+            } else {
+                setIsSubscribed(true);
+                setSubscriptionId(data[0].id);
             }
-        })
+        });
     })
 
     return (

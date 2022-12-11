@@ -3,16 +3,13 @@ import InfoBlock from "./InfoBlock";
 import Posts from "./Posts";
 import {ajaxService} from '../../../services/ajaxService'
 import {useEffect, useState} from "react";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Loader from "../../Loader";
 import {isLogin} from "../../../utils/isLogin";
 
 const Profile = () => {
     const [blog, setBlog] = useState(null);
-    const [user, setUser] = useState(null);
-    const [blogId, setBlogId] = useState(null);
     const params = useParams();
-    const navigate = useNavigate();
 
     // useEffect(() => {
         // ajaxService(`/blogs/?user=${params.id}`).then((data) => {
@@ -26,9 +23,6 @@ const Profile = () => {
 
     useEffect(() => {
         if (isLogin()) {
-            ajaxService('/user/current').then((data) => {
-                setUser(data);
-            });
             ajaxService(`/blogs/${params.id}/`).then((data) => {
                 setBlog(data);
             });
@@ -38,10 +32,15 @@ const Profile = () => {
     return (
         <Main>
             {
-                blog ? <InfoBlock username={blog.user.username} total_followings={blog.total_followings}
-                                  total_followers={blog.total_followers} total_posts={blog.total_posts}
-                                  quote={blog.quote} avatar={blog.avatar} key={blog.id}
-                                  blog_user_id={blog.user.id} current_user_id={user.id}/>
+                blog ? <InfoBlock username={blog.user.username}
+                                  total_followings={blog.total_followings}
+                                  total_followers={blog.total_followers}
+                                  total_posts={blog.total_posts}
+                                  quote={blog.quote}
+                                  avatar={blog.avatar}
+                                  key={blog.id}
+                                  blog_user_id={blog.user.id}
+                    />
                     : <Loader/>
             }
             {
