@@ -85,9 +85,7 @@ const Settings = () => {
                         </div>
                         <div className={style.description_form}>
                             <form>
-                                {/*<InputBlock text={"новое имя пользователя"} type={"username"}/>*/}
-                                {/*<InputBlock text={"новая почта"} type={"username"}/>*/}
-                                <InputBlock text={"цитата"} type={"username"} maxLength={40}
+                                <InputBlock text={"цитата"} type={"username"} maxLength={65}
                                             value={quote} onChange={handleQuoteChange}/>
                             </form>
                         </div>
