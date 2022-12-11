@@ -18,6 +18,7 @@ const Search = () => {
 
     const [blogs, setBlogs] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
+    const [currentUserId, setCurrentUserId] = useState(null);
     const navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -25,24 +26,35 @@ const Search = () => {
     };
 
     useEffect(() => {
-        ajaxService('/blogs/').then((data) => {
-            const blogs = [];
-
-            data.forEach((blog) => {
-                const blogElement = (
-                    <Found
-                        key={blog.id}
-                        id={blog.id}
-                        username={blog.user.username}
-                        avatar={blog.avatar}
-                        is_subscribed={true}
-                    />
-                );
-                blogs.push(blogElement);
-            });
-
-            setBlogs(blogs);
+        ajaxService('/user/current').then((data) => {
+            setCurrentUserId(data['id']);
         });
+
+        const subscriptions = [];
+        ajaxService(`/following/?id=${currentUserId}`).then((data) => {
+            data.forEach((subscription) => {
+                subscriptions.push(subscription.following_user.id);
+            });
+        }).then(() => {
+            ajaxService('/blogs/').then((data) => {
+                const blogs = [];
+                data.forEach((blog) => {
+                    const is_subscribed = Boolean(subscriptions.indexOf(blog.user.id) > -1)
+                    const blogElement = (
+                        <Found
+                            key={blog.id}
+                            id={blog.id}
+                            username={blog.user.username}
+                            avatar={blog.avatar}
+                            is_subscribed={is_subscribed}
+                        />
+                    );
+                    blogs.push(blogElement);
+                });
+
+                setBlogs(blogs);
+            });
+        })
     // .catch(() => {
     //         navigate("/", {replace: true});
     //     })

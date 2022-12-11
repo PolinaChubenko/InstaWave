@@ -8,7 +8,7 @@ const InfoBlock = (props) => {
     const [subscriptionId, setSubscriptionId] = useState(null);
     const [currentUserId, setCurrentUserId] = useState(null);
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [myBlog, setMyBlog] = useState(false);
+    const [myBlog, setMyBlog] = useState(true);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -31,21 +31,20 @@ const InfoBlock = (props) => {
     }
 
     useEffect(() => {
-        if (currentUserId === blogUserId) {
-            setMyBlog(true);
-            return;
+        if (currentUserId !== blogUserId) {
+            setMyBlog(false);
+            ajaxService('/user/current').then((data) => {
+                setCurrentUserId(data['id']);
+            });
+            ajaxService(`/following/?who=${currentUserId}&whom=${blogUserId}`).then((data) => {
+                if (Object.keys(data).length === 0) {
+                    setIsSubscribed(false);
+                } else {
+                    setIsSubscribed(true);
+                    setSubscriptionId(data[0].id);
+                }
+            });
         }
-        ajaxService('/user/current').then((data) => {
-            setCurrentUserId(data['id']);
-        });
-        ajaxService(`/following/?who=${currentUserId}&whom=${blogUserId}`).then((data) => {
-            if (Object.keys(data).length === 0) {
-                setIsSubscribed(false);
-            } else {
-                setIsSubscribed(true);
-                setSubscriptionId(data[0].id);
-            }
-        });
     })
 
     return (
