@@ -36,3 +36,7 @@
 .is_not_subscribed:active {
     color: darkgrey;
 }
+
+.is_me {
+    color: sandybrown;
+}

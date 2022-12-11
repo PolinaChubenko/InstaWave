@@ -21,6 +21,9 @@ export function ajaxService(url, params = {}) {
                     headers: {...params.headers, 'Authorization': `Bearer ${data.access}`} };
                 return fetch(`${process.env.REACT_APP_API}/api` + url, newParams).then((data) => {
                     if (data.ok) {
+                        if (params.method === 'DELETE') {
+                            return;
+                        }
                         return data.json();
                     }
 
@@ -29,6 +32,9 @@ export function ajaxService(url, params = {}) {
             });
         }
         if (data.ok) {
+            if (params.method === 'DELETE') {
+                return;
+            }
             return data.json();
         }
 

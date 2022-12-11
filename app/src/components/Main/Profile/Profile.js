@@ -11,16 +11,6 @@ const Profile = () => {
     const [blog, setBlog] = useState(null);
     const params = useParams();
 
-    // useEffect(() => {
-        // ajaxService(`/blogs/?user=${params.id}`).then((data) => {
-        //     const blog_id = data[0].id;
-        //     setBlogId(blog_id);
-        //     ajaxService(`/blogs/${params.id}/`).then((data) => {
-        //         setBlog(data);
-        //     });
-        // });
-    // }, [params])
-
     useEffect(() => {
         if (isLogin()) {
             ajaxService(`/blogs/${params.id}/`).then((data) => {
@@ -40,6 +30,7 @@ const Profile = () => {
                                   avatar={blog.avatar}
                                   key={blog.id}
                                   blog_user_id={blog.user.id}
+                                  blog_id={blog.id}
                     />
                     : <Loader/>
             }

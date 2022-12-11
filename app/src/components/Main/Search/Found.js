@@ -13,8 +13,8 @@ const Found = (props) => {
                 </div>
                 <div>
                     <p className={style.username}>{props.username}</p>
-                    <div className={style.is_subscribed}>
-                        <Subscribe is_subscribed={props.is_subscribed}/>
+                    <div>
+                        <Subscribe is_me={props.is_me} is_subscribed={props.is_subscribed}/>
                     </div>
                 </div>
             </div>

@@ -5,19 +5,44 @@ import {useEffect, useState} from "react";
 
 const InfoBlock = (props) => {
     const blogUserId = props.blog_user_id;
+    const blogId = props.blog_id;
     const [subscriptionId, setSubscriptionId] = useState(null);
     const [currentUserId, setCurrentUserId] = useState(null);
     const [isSubscribed, setIsSubscribed] = useState(false);
-    const [myBlog, setMyBlog] = useState(true);
+    const [myBlog, setMyBlog] = useState(false);
+
+    const [totalFollowers, setTotalFollowers] = useState(props.total_followers);
+    const [totalFollowings, setTotalFollowings] = useState(props.total_followings);
+
+
+    function update_followers() {
+        ajaxService(`/blogs/${blogId}/`).then((data) => {
+            setTotalFollowers(data.total_followers);
+            setTotalFollowings(data.total_followings);
+        });
+    }
+
+    function update_subscription_states() {
+        ajaxService(`/following/?who=${currentUserId}&whom=${blogUserId}`).then((data) => {
+            if (Object.keys(data).length === 0) {
+                setIsSubscribed(false);
+                setSubscriptionId(null);
+            } else {
+                setIsSubscribed(true);
+                setSubscriptionId(data[0].id);
+            }
+        });
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (isSubscribed) {
             ajaxService(`/following/${subscriptionId}/`, {
                 method: 'DELETE',
-            }).then();
-            setIsSubscribed(false);
-            setSubscriptionId(null);
+            }).then(() => {
+                update_followers();
+                update_subscription_states();
+            });
         } else {
             ajaxService('/following/', {
                 method: 'POST',
@@ -25,27 +50,27 @@ const InfoBlock = (props) => {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then();
-            setIsSubscribed(true);
+            }).then(() => {
+                update_followers();
+                update_subscription_states();
+            });
         }
     }
 
     useEffect(() => {
-        if (currentUserId !== blogUserId) {
-            setMyBlog(false);
-            ajaxService('/user/current').then((data) => {
-                setCurrentUserId(data['id']);
-            });
-            ajaxService(`/following/?who=${currentUserId}&whom=${blogUserId}`).then((data) => {
-                if (Object.keys(data).length === 0) {
-                    setIsSubscribed(false);
-                } else {
-                    setIsSubscribed(true);
-                    setSubscriptionId(data[0].id);
-                }
-            });
-        }
+        ajaxService('/user/current').then((data) => {
+            setCurrentUserId(data['id']);
+        });
     })
+
+    useEffect(() => {
+        if (currentUserId !== null) {
+            if (currentUserId === blogUserId) {
+                setMyBlog(true);
+            }
+            update_subscription_states();
+        }
+    }, [currentUserId])
 
     return (
         <div className={style.profile_wrapper}>
@@ -69,8 +94,8 @@ const InfoBlock = (props) => {
                 </div>
                 <div className={style.publications_block}>
                     <p>Публикаций: <span>{props.total_posts}</span></p>
-                    <p>Подписчиков: <span>{props.total_followers}</span></p>
-                    <p>Подписок: <span>{props.total_followings}</span></p>
+                    <p>Подписчиков: <span>{totalFollowers}</span></p>
+                    <p>Подписок: <span>{totalFollowings}</span></p>
                 </div>
             </div>
         </div>
