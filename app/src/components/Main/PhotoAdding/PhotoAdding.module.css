@@ -59,7 +59,7 @@
     margin-bottom: 1%;
     float: left;
     width: 320px;
-    height: 400px;
+    height: 375px;
     background: url(../../../images/photo-frame.png) no-repeat;
     background-size: 100% 100%;
 }
@@ -86,5 +86,15 @@
     margin: 10% 1% 0 1%;
     height: 100px;
     width: 200px;
+}
+
+
+
+
+.cropContainer {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    background: #333;
 }
 
