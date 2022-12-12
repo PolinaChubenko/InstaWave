@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import InputBlock from "../InputBlock/InputBlock";
 import ForgotPassword from "../ForgotPassword/ForgotPassword";
-import {ajaxAuthService} from '../../../services/ajaxService'
+import {ajaxAuthService, ajaxService} from '../../../services/ajaxService'
 import style from "./Forms.module.css";
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react'
@@ -31,7 +31,13 @@ const SignInForm = () => {
         }).then((data) => {
             window.localStorage.setItem("ACCESS", data.access);
             window.localStorage.setItem("REFRESH", data.refresh);
-            navigate("search", {replace: true});
+        }).then(() => {
+            ajaxService('/user/current').then((data) => {
+                ajaxService(`/blogs/?user=${data['id']}`).then((data) => {
+                    const blog_id = data[0].id;
+                    navigate(`profile/${blog_id}/`, {replace: true});
+                });
+            });
         }).catch(() => {
             setError("неверные данные")
         });

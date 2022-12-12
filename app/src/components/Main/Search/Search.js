@@ -32,7 +32,7 @@ const Search = () => {
     useEffect(() => {
         if (currentUserId !== null) {
             const subscriptions = [];
-            ajaxService(`/following/?id=${currentUserId}`).then((data) => {
+            ajaxService(`/following/?who=${currentUserId}`).then((data) => {
                 data.forEach((subscription) => {
                     subscriptions.push(subscription.following_user.id);
                 });
